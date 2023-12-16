@@ -23,4 +23,4 @@ A comprehensive User Analytics project focused on analyzing user overview, engag
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/user-analytics-telecom.git
+   git clone https://github.com/DanielZerihunGeda/Telecom.git
