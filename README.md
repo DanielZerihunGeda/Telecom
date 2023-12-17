@@ -111,4 +111,21 @@ In the src directory, there are two modules: Utility and DataCleaner.
 	Returns the fully cleaned data for further EDA analysis.
 ## EDA-analysis
 
+EDA Analysis Directory, you'll find essential functions for Exploratory Data Analysis (EDA). These functions cover various aspects:
+Univariate Analysis:
+
+Provides tools for analyzing individual variables.
+
+Bivariate Analysis:
+
+Allows the examination of relationships between two variables.
+
+Multivariate Analysis:
+
+Supports the analysis of interactions between multiple variables.
+
+Outlier Analysis:
+
+Identifies and handles outliers within the dataframe. for a given columns
+
 
