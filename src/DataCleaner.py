@@ -12,9 +12,9 @@ class ProcessData:
         self.table_name = table_name
 """ columns to be interpolated based on appropriate mechanisms to ensure data integerity and conviniece analysis"""
 
-        self.columns_to_interpolate =['Avg RTT DL (ms)', 'Avg RTT UL (ms)',
+        self.columns_to_interpolate =['Avg RTT DL (ms)', 'Avg RTT UL (ms)'
                                   ,'TCP DL Retrans. Vol (Bytes)',
-                                 'TCP UL Retrans. Vol (Bytes)'] '
+                                 'TCP UL Retrans. Vol (Bytes)']
     
     def process_data(self):
         processor = DataProcessor(self.username, self.password, self.host, self.database, self.table_name)
@@ -74,13 +74,14 @@ class ProcessData:
                                 'UL TP > 300 Kbps (%)']
             },
         ]
-
+        col_interpolated = ['Avg RTT DL (ms)','Avg RTT UL (ms)']
+        processed_df=  processor.interpolate_columns(col_interpolated,window_size=5)
+        processed_df = processed_df
         for case in cases:
             related_cols = case['related_cols']
             target_cols = case['target_cols']
             processed_df = processor.assign_zero_based_on_condition(related_cols, target_cols)
-        col_interpolated = ['Avg RTT DL (ms)','Avg RTT UL (ms)']
-        processed_df=  processor.interpolate_columns(col_interpolated,window_size=5)
+
         
         return processed_df  # Return the processed data
     

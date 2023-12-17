@@ -1,0 +1,25 @@
+# Ignore build artifacts
+*.pyc
+*.class
+*.o
+
+# Ignore logs and temporary files
+logs/*
+tmp/*
+.pytest_cache/
+.ipynb_checkpoints/
+# Ignore test data and fixtures
+
+# Ignore IDE specific files
+
+
+# Ignore local environment settings
+
+# Ignore version control tools
+.git/
+.hg/
+
+# Ignore sensitive data patterns
+*.pem
+*_key
+# Ignore specific files

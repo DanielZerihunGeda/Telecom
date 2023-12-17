@@ -90,7 +90,7 @@ In the src directory, there are two modules: Utility and DataCleaner.
 
 	Takes raw data hosted by PostgreSQL.
 
-	Allows you to assign the following parameters:
+	Allows you to assign the following parameters is test.py in tests directory:
 		Username
 		Password
 		Table name
