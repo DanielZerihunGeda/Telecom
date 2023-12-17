@@ -13,21 +13,6 @@ class ProcessData:
         self.columns_to_interpolate =['Avg RTT DL (ms)', 'Avg RTT UL (ms)',
                                   ,'TCP DL Retrans. Vol (Bytes)',
                                  'TCP UL Retrans. Vol (Bytes)']
-    def interpolate_missing_values(self, processed_df):
-        # Convert 'Start' column to datetime
-        processed_df['Start'] = pd.to_datetime(processed_df['Start'], errors='coerce', format='%m/%d/%Y %H:%M')
-
-        for column_name in self.columns_to_interpolate:
-            non_null_indices = processed_df[column_name].notnull()
-            non_null_values = processed_df.loc[non_null_indices, column_name]
-            time_indices = processed_df.loc[non_null_indices, 'Start']
-
-            interpolator = interp1d(time_indices, non_null_values, kind='linear', fill_value='extrapolate')
-            missing_indices = processed_df[column_name].isnull()
-            missing_times = processed_df.loc[missing_indices, 'Start']
-
-            processed_df.loc[missing_indices, column_name] = interpolator(missing_times)
-        return processed_df
     
     def process_data(self):
         processor = DataProcessor(self.username, self.password, self.host, self.database, self.table_name)
@@ -76,7 +61,3 @@ class ProcessData:
             
         return processed_df  # Return the processed data
 
-    def interpolate_and_process_data(self):
-        processed_df = self.process_data()  # Process the fetched data
-        processed_df = self.interpolate_missing_values(processed_df)
-        return processed_df  # Return the cleaned and interpolated DataFrame

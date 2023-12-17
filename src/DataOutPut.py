@@ -45,7 +45,7 @@ class ProcessData:
             processed_df = processor.drop_columns([col])
 
         cases = [
-            # ... (existing code remains unchanged) ...
+            
         ]
 
         for case in cases:
@@ -53,7 +53,7 @@ class ProcessData:
             target_cols = case['target_cols']
             processed_df = processor.assign_zero_based_on_condition(related_cols, target_cols)
             
-        # Interpolate missing values in a specific column (example: 'Your_Column_Name')
+        # Interpolate missing values in a specific column
         column_to_interpolate = 'Your_Column_Name'
         processed_df = self.interpolate_nonlinear(processed_df, column_to_interpolate)
 
