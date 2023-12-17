@@ -29,7 +29,7 @@ A comprehensive User Analytics project focused on analyzing user overview, engag
    git clone https://github.com/DanielZerihunGeda/Telecom.git
  2. Navigate to the project directory:
     ```bash
-    cd network_analysis
+    cd Telecom
     ```
  
 3. Install the required dependencies:
