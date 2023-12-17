@@ -79,6 +79,9 @@ class ProcessData:
             related_cols = case['related_cols']
             target_cols = case['target_cols']
             processed_df = processor.assign_zero_based_on_condition(related_cols, target_cols)
-            
+        col_interpolated = ['Avg RTT DL (ms)','Avg RTT UL (ms)']
+        processed_df=  processor.interpolate_columns(col_interpolated,window_size=5)
+        
         return processed_df  # Return the processed data
+    
 

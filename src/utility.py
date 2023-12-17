@@ -39,3 +39,29 @@ class DataProcessor:
                     for col in target_cols:
                         self.df.at[idx, col] = 0
         return self.df  
+
+    def interpolate_columns(self, columns_to_interpolate, window_size=3):
+        """
+        Interpolate specified columns using a moving average and fill NaN values.
+
+        Parameters:
+        - columns_to_interpolate (list): List of column names to interpolate.
+        - window_size (int): Size of the moving average window. we use small value to for resource management and processing time
+
+        """
+        df_interpolated = self.df.copy()
+
+        for column in columns_to_interpolate:
+            if column not in df_interpolated.columns:
+                print(f"Column '{column}' not found in the DataFrame.")
+                continue
+
+            df_interpolated[column] = df_interpolated[column].rolling(window=window_size, min_periods=1).mean()
+
+        # Fill remaining NaN values after interpolation
+        df_interpolated = df_interpolated.ffill()
+
+        # Replace specified columns in the original DataFrame
+        self.df[columns_to_interpolate] = df_interpolated[columns_to_interpolate]
+
+        return self.df
