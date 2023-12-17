@@ -11,8 +11,6 @@ A comprehensive User Analytics project focused on analyzing user overview, engag
 - [Creating a Virtual Environment](#virtual-env)
 - [Usage](#usage)
  - [Data Loading](#data-loading)
- - [Data Cleaning](#data-cleaning)
-  - [Utilities](#utilities)
   - [EDA](#EDA-Analysis)
 - [Testing](#testing)
 - [Contributing](#contributing)
@@ -86,7 +84,31 @@ Now, your virtual environment is created and activated. You can install packages
 
 ## usage
 ## data-loading
-## data-cleaning
+In the src directory, there are two modules: Utility and DataCleaner.
+
+1. Utility Module:
+
+	Takes raw data hosted by PostgreSQL.
+
+	Allows you to assign the following parameters:
+		Username
+		Password
+		Table name
+		Database name
+
+	Used for processing data before conducting Exploratory Data Analysis (EDA).
+
+	The module passes the fetched data and contains necessary methods for cleaning up, including interpolation.
+
+	Returns the processed data as a dataframe.
+
+2. DataCleaner Module:
+
+	Takes the data processed by the Utility module.
+
+	Performs final cleaning steps.
+
+	Returns the fully cleaned data for further EDA analysis.
 ## EDA-analysis
 
 
