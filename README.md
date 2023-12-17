@@ -11,13 +11,10 @@ A comprehensive User Analytics project focused on analyzing user overview, engag
 - [Creating a Virtual Environment](#virtual-env)
 - [Usage](#usage)
  - [Data Loading](#data-loading)
+ - [Data Cleaning](#data-cleaning)
   - [Utilities](#utilities)
+  - [EDA](#EDA Analysis)
 - [Testing](#testing)
-- [Analysis](#analysis)
-  - [User Overview](#user-overview)
-  - [User Engagement](#user-engagement)
-  - [Experience Analytics](#experience-analytics)
-  - [Satisfaction Analytics](#satisfaction-analytics)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -88,4 +85,8 @@ If you prefer using `venv`, Python's built-in virtual environment module:
 Now, your virtual environment is created and activated. You can install packages and run your Python scripts within this isolated environment. Don't forget to install required packages using `pip` or `conda` once the environment is activated.
 
 ## usage
+## data-loading
+## data-cleaning
+## EDA analysis
+
 
