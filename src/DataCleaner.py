@@ -10,23 +10,44 @@ class ProcessData:
         self.host = host
         self.database = database
         self.table_name = table_name
+""" columns to be interpolated based on appropriate mechanisms to ensure data integerity and conviniece analysis"""
+
         self.columns_to_interpolate =['Avg RTT DL (ms)', 'Avg RTT UL (ms)',
                                   ,'TCP DL Retrans. Vol (Bytes)',
-                                 'TCP UL Retrans. Vol (Bytes)']
+                                 'TCP UL Retrans. Vol (Bytes)'] '
     
     def process_data(self):
         processor = DataProcessor(self.username, self.password, self.host, self.database, self.table_name)
         processed_df = processor.fetch_data()
+""" 
+    Dropping null values from the columns which are listed below, because the missing values from those columns
 
+    indicates that the user xdr session is not recored accurately it might be the user on 'VPN' network for instance
+
+    so the data measured for each attribute are not the actual data, or the other reason might be technical problem
+
+"""
         col_val = ['Bearer Id', 'IMSI', 'Last Location Name', 'Last Location Name', 'IMEI',
                    'MSISDN/Number', 'Handset Manufacturer', 'Handset Type']
         for col in col_val:
             processed_df = processor.drop_null_rows(col)
+"""
+    we don't need ['HTTP DL (Bytes)', 'HTTP UL (Bytes)'] col to for our Expolraotry Data Analysis due to they are missing in
+    
+    large proportion compared to the data set we have
+ 
+"""
 
         columns_to_drop = ['HTTP DL (Bytes)', 'HTTP UL (Bytes)']
         for col in columns_to_drop:
             processed_df = processor.drop_columns([col])
-
+""" 
+    those cols in cases variable are columns which are interelated with each other each columns 
+    
+    for a given interrelated columns they can not have non-zero value simultaneosly if one of 
+    
+    the attribute has non zero values we will assign 0 for the rest of the interrelated columns
+"""
         cases = [
             {
                 'related_cols': ['Nb of sec with 125000B < Vol DL', 'Nb of sec with 31250B < Vol DL < 125000B',
