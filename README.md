@@ -13,7 +13,7 @@ A comprehensive User Analytics project focused on analyzing user overview, engag
  - [Data Loading](#data-loading)
  - [Data Cleaning](#data-cleaning)
   - [Utilities](#utilities)
-  - [EDA](#EDA Analysis)
+  - [EDA](#EDA-Analysis)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
@@ -87,6 +87,6 @@ Now, your virtual environment is created and activated. You can install packages
 ## usage
 ## data-loading
 ## data-cleaning
-## EDA analysis
+## EDA-analysis
 
 
